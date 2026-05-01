@@ -8,12 +8,12 @@ if len(sys.argv) > 1:
     if basepath[-1] != "/":
         basepath += "/"
     if len(sys.argv) > 2:
-        output_path = sys.argv[2]
+        output_location = sys.argv[2]
     else:
-        output_path = "public"
+        output_location = "public"
 else:
     basepath = "/"
-    output_path = "public"
+    output_location = "public"
 
 copy_files()
 
@@ -33,8 +33,8 @@ def generate_page_recursively(content_dir, template_path, output_dir):
                 f"{content_dir}/{file}",
                 template_path,
                 output_path,
-                f"{basepath}{output_path}/",
+                f"{basepath}{output_location}/",
             )
 
 
-generate_page_recursively("content", "template.html", output_path)
+generate_page_recursively("content", "template.html", output_location)
