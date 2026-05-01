@@ -1,6 +1,19 @@
 from copy_files import copy_files
 from generate_page import generate_page
+import sys
 import os
+
+if len(sys.argv) > 1:
+    basepath = sys.argv[1]
+    if basepath[-1] != "/":
+        basepath += "/"
+    if len(sys.argv) > 2:
+        output_path = sys.argv[2]
+    else:
+        output_path = "public"
+else:
+    basepath = "/"
+    output_path = "public"
 
 copy_files()
 
@@ -16,7 +29,7 @@ def generate_page_recursively(content_dir, template_path, output_dir):
 
         if file.endswith(".md"):
             output_path = f"{output_dir}/{file[:-3]}.html"
-            generate_page(f"{content_dir}/{file}", template_path, output_path)
+            generate_page(f"{content_dir}/{file}", template_path, output_path, basepath)
 
 
-generate_page_recursively("content", "template.html", "public")
+generate_page_recursively("content", "template.html", output_path)
