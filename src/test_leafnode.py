@@ -18,3 +18,7 @@ class TestLeafNode(TestCase):
     def test_leaf_to_html_a_repr(self):
         node = LeafNode("a", "", props={"href": "https://google.com"})
         self.assertRaises(ValueError, node.to_html)
+
+    def test_leaf_img_to_html(self):
+        node = LeafNode("img", "", props={"src": "image.png", "alt": "An image"})
+        self.assertEqual(node.to_html(), '<img src="image.png" alt="An image" />')

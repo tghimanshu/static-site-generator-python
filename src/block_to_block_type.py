@@ -18,8 +18,8 @@ def block_to_block_type(markdown):
     if re.match(r"^```((.|\n)*)```$", markdown):
         return BlockType.CODE
 
-    lines = markdown.split("\n")
-    if all(re.match(r"^> ", line) for line in lines):
+    lines = markdown.splitlines()
+    if all(re.match(r"^>", line) for line in lines):
         return BlockType.QUOTE
     if all(re.match(r"^[-*] ", line) for line in lines):
         return BlockType.UNORDERED_LIST
