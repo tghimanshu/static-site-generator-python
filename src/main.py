@@ -33,7 +33,7 @@ def generate_page_recursively(content_dir, template_path, output_dir):
                 f"{content_dir}/{file}",
                 template_path,
                 output_path,
-                f"{basepath}{output_location}/",
+                f"{basepath}",
             )
 
 
