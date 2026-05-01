@@ -15,7 +15,7 @@ else:
     basepath = "/"
     output_location = "public"
 
-copy_files()
+copy_files(target_dir=output_location)
 
 # generate_page("content/index.md", "template.html", "public/index.html")
 
