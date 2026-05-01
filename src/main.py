@@ -29,7 +29,12 @@ def generate_page_recursively(content_dir, template_path, output_dir):
 
         if file.endswith(".md"):
             output_path = f"{output_dir}/{file[:-3]}.html"
-            generate_page(f"{content_dir}/{file}", template_path, output_path, basepath)
+            generate_page(
+                f"{content_dir}/{file}",
+                template_path,
+                output_path,
+                f"{basepath}{output_path}/",
+            )
 
 
 generate_page_recursively("content", "template.html", output_path)
